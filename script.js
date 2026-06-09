@@ -112,26 +112,36 @@ function switchForm(id, btn) {
 async function submitForm(event, thanksId) {
   event.preventDefault();
   const form = event.target;
-  const data = new FormData(form);
+
+  const data = {};
+  new FormData(form).forEach((value, key) => {
+    data[key] = value;
+  });
 
   try {
     const response = await fetch('https://formspree.io/f/mvznrror', {
       method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(data),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     });
+
+    const result = await response.json();
 
     if (response.ok) {
       form.style.display = 'none';
       document.getElementById(thanksId).style.display = 'block';
     } else {
-      alert('Something went wrong — please email me directly at gfrew05@email.com');
+      const msg = result.errors?.map(e => e.message).join(', ') || 'Submission failed';
+      alert('Error: ' + msg);
     }
   } catch (err) {
+    console.error('Form error:', err);
     alert('Something went wrong — please email me directly at gfrew05@email.com');
   }
 }
-
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   showPage('home');
