@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </head>
 <body>
 
@@ -297,7 +298,7 @@
               <div class="thanks-icon">✓</div>
               <p>Thank you — I'll be in touch soon.</p>
             </div>
-            <form onsubmit="submitForm(event,'thanks-general')">
+            <form id="form-general-fs" action="https://formspree.io/f/mvznrror" method="POST" onsubmit="submitForm(event,'thanks-general')">
               <div class="field-row">
                 <div class="field"><label>Name</label><input type="text" placeholder="Your name" required /></div>
                 <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
@@ -314,7 +315,7 @@
               <div class="thanks-icon">✓</div>
               <p>Got it — I'll send you my resume within 24 hours.</p>
             </div>
-            <form onsubmit="submitForm(event,'thanks-resume')">
+            <form id="form-general-fs" action="https://formspree.io/f/mvznrror" method="POST" onsubmit="submitForm(event,'thanks-general')">
               <div class="field-row">
                 <div class="field"><label>Name</label><input type="text" placeholder="Your name" required /></div>
                 <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
@@ -332,7 +333,7 @@
               <div class="thanks-icon">✓</div>
               <p>Noted — I'll send my portfolio your way shortly.</p>
             </div>
-            <form onsubmit="submitForm(event,'thanks-portfolio')">
+            <form id="form-general-fs" action="https://formspree.io/f/mvznrror" method="POST" onsubmit="submitForm(event,'thanks-general')">
               <div class="field-row">
                 <div class="field"><label>Name</label><input type="text" placeholder="Your name" required /></div>
                 <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
