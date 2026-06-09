@@ -109,12 +109,27 @@ function switchForm(id, btn) {
 }
 
 // ── FORM SUBMIT ──
-function submitForm(event, thanksId) {
+async function submitForm(event, thanksId) {
   event.preventDefault();
   const form = event.target;
-  const thanks = document.getElementById(thanksId);
-  form.style.display = 'none';
-  thanks.style.display = 'block';
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch('https://formspree.io/f/mvznrror', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById(thanksId).style.display = 'block';
+    } else {
+      alert('Something went wrong — please email me directly at gfrew05@email.com');
+    }
+  } catch (err) {
+    alert('Something went wrong — please email me directly at gfrew05@email.com');
+  }
 }
 
 // ── INIT ──
